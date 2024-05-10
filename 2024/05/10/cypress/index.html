@@ -23,28 +23,32 @@
     var NexT = window.NexT || {};
     var CONFIG = {"hostname":"niuniuliuliu.github.io","root":"/","images":"/images","scheme":"Pisces","version":"8.2.2","exturl":false,"sidebar":{"position":"left","display":"post","padding":18,"offset":12},"copycode":false,"bookmark":{"enable":false,"color":"#222","save":"auto"},"fancybox":false,"mediumzoom":false,"lazyload":false,"pangu":false,"comments":{"style":"tabs","active":null,"storage":true,"lazyload":false,"nav":null},"motion":{"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"fadeInDown","post_body":"fadeInDown","coll_header":"fadeInLeft","sidebar":"fadeInUp"}},"prism":false,"i18n":{"placeholder":"搜索...","empty":"没有找到任何搜索结果：${query}","hits_time":"找到 ${hits} 个搜索结果（用时 ${time} 毫秒）","hits":"找到 ${hits} 个搜索结果"}};
   </script>
-<meta property="og:type" content="website">
-<meta property="og:title" content="niuniuliuliu">
-<meta property="og:url" content="https://niuniuliuliu.github.io/index.html">
+<meta name="description" content="Cypress 是为现代 web 构建的下一代前端测试工具。可以测试所有基于浏览器运行的应用，支持所有类型测试：端到端测试、组件测试、集成测试、单元测试。 与Selenium Webdriver、 Puppeteer 的区别 大多数测试工具(如Selenium)通过在浏览器外部运行并通过网络执行远程命令来运行，而Cypress与你的应用程序相同的运行循环中执行。 不需要支持进程间通信所需要的控制协">
+<meta property="og:type" content="article">
+<meta property="og:title" content="Cypress使用简介">
+<meta property="og:url" content="https://niuniuliuliu.github.io/2024/05/10/cypress/index.html">
 <meta property="og:site_name" content="niuniuliuliu">
+<meta property="og:description" content="Cypress 是为现代 web 构建的下一代前端测试工具。可以测试所有基于浏览器运行的应用，支持所有类型测试：端到端测试、组件测试、集成测试、单元测试。 与Selenium Webdriver、 Puppeteer 的区别 大多数测试工具(如Selenium)通过在浏览器外部运行并通过网络执行远程命令来运行，而Cypress与你的应用程序相同的运行循环中执行。 不需要支持进程间通信所需要的控制协">
 <meta property="og:locale" content="zh_CN">
+<meta property="article:published_time" content="2024-05-10T09:10:26.000Z">
+<meta property="article:modified_time" content="2024-05-10T09:37:00.673Z">
 <meta property="article:author" content="niuniuliuliu">
 <meta name="twitter:card" content="summary">
 
 
-<link rel="canonical" href="https://niuniuliuliu.github.io/">
+<link rel="canonical" href="https://niuniuliuliu.github.io/2024/05/10/cypress/">
 
 
 <script class="page-configurations">
   // https://hexo.io/docs/variables.html
   CONFIG.page = {
     sidebar: "",
-    isHome : true,
-    isPost : false,
+    isHome : false,
+    isPost : true,
     lang   : 'zh-CN'
   };
 </script>
-<title>niuniuliuliu</title>
+<title>Cypress使用简介 | niuniuliuliu</title>
   
 
 
@@ -142,7 +146,7 @@
 
   <aside class="sidebar">
 
-    <div class="sidebar-inner sidebar-overview-active">
+    <div class="sidebar-inner sidebar-nav-active sidebar-toc-active">
       <ul class="sidebar-nav">
         <li class="sidebar-nav-toc">
           文章目录
@@ -155,6 +159,7 @@
       <div class="sidebar-panel-container">
         <!--noindex-->
         <div class="post-toc-wrap sidebar-panel">
+            <div class="post-toc animated"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#%E4%B8%8ESelenium-Webdriver%E3%80%81-Puppeteer-%E7%9A%84%E5%8C%BA%E5%88%AB"><span class="nav-number">1.</span> <span class="nav-text">与Selenium Webdriver、 Puppeteer 的区别</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E4%BD%BF%E7%94%A8Cypress"><span class="nav-number">2.</span> <span class="nav-text">使用Cypress</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#%E5%AE%89%E8%A3%85Cypress%EF%BC%8C"><span class="nav-number">2.1.</span> <span class="nav-text">安装Cypress，</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E5%90%AF%E5%8A%A8Cypress"><span class="nav-number">2.2.</span> <span class="nav-text">启动Cypress</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Cypress%E9%85%8D%E7%BD%AE"><span class="nav-number">2.3.</span> <span class="nav-text">Cypress配置</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E7%BB%84%E4%BB%B6%E6%B5%8B%E8%AF%95"><span class="nav-number">2.4.</span> <span class="nav-text">组件测试</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E7%AB%AF%E5%88%B0%E7%AB%AF%E6%B5%8B%E8%AF%95"><span class="nav-number">2.5.</span> <span class="nav-text">端到端测试</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#plugins"><span class="nav-number">2.6.</span> <span class="nav-text">plugins</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#code-coverage"><span class="nav-number">2.6.1.</span> <span class="nav-text">code coverage</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#Cucumber"><span class="nav-number">2.6.2.</span> <span class="nav-text">Cucumber</span></a></li></ol></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E5%8F%82%E8%80%83"><span class="nav-number">3.</span> <span class="nav-text">参考</span></a></li></ol></div>
         </div>
         <!--/noindex-->
 
@@ -212,16 +217,17 @@
 </noscript>
 
 
-    <div class="main-inner index posts-expand">
+    <div class="main-inner post posts-expand">
 
-    
+
+  
 
 
 <div class="post-block">
   
   
 
-  <article itemscope itemtype="http://schema.org/Article" class="post-content" lang="">
+  <article itemscope itemtype="http://schema.org/Article" class="post-content" lang="zh-CN">
     <link itemprop="mainEntityOfPage" href="https://niuniuliuliu.github.io/2024/05/10/cypress/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
@@ -234,9 +240,9 @@
       <meta itemprop="name" content="niuniuliuliu">
     </span>
       <header class="post-header">
-        <h2 class="post-title" itemprop="name headline">
-          <a href="/2024/05/10/cypress/" class="post-title-link" itemprop="url">Cypress使用简介</a>
-        </h2>
+        <h1 class="post-title" itemprop="name headline">
+          Cypress使用简介
+        </h1>
 
         <div class="post-meta-container">
           <div class="post-meta">
@@ -269,7 +275,7 @@
     
     
     <div class="post-body" itemprop="articleBody">
-          <p><a target="_blank" rel="noopener" href="https://www.cypress.io/">Cypress</a> 是为现代 web 构建的下一代前端测试工具。可以测试所有基于浏览器运行的应用，支持所有类型测试：端到端测试、组件测试、集成测试、单元测试。</p>
+        <p><a target="_blank" rel="noopener" href="https://www.cypress.io/">Cypress</a> 是为现代 web 构建的下一代前端测试工具。可以测试所有基于浏览器运行的应用，支持所有类型测试：端到端测试、组件测试、集成测试、单元测试。</p>
 <h2 id="与Selenium-Webdriver、-Puppeteer-的区别"><a href="#与Selenium-Webdriver、-Puppeteer-的区别" class="headerlink" title="与Selenium Webdriver、 Puppeteer 的区别"></a>与Selenium Webdriver、 Puppeteer 的区别</h2><ul>
 <li><p>大多数测试工具(如Selenium)通过在浏览器外部运行并通过网络执行远程命令来运行，而Cypress与你的应用程序相同的运行循环中执行。 不需要支持进程间通信所需要的控制协议，解决了进程间发送接受命令所带来的响应延迟。</p>
 </li>
@@ -338,7 +344,6 @@
 <p><a target="_blank" rel="noopener" href="https://github.com/badeball/cypress-cucumber-preprocessor/blob/master/docs/readme.md">https://github.com/badeball/cypress-cucumber-preprocessor/blob/master/docs/readme.md</a></p>
 <p><a target="_blank" rel="noopener" href="https://github.com/istanbuljs/babel-plugin-istanbul">https://github.com/istanbuljs/babel-plugin-istanbul</a></p>
 
-      
     </div>
 
     
@@ -346,459 +351,22 @@
     
 
     <footer class="post-footer">
-        <div class="post-eof"></div>
-      
-    </footer>
-  </article>
-</div>
 
-
-
-
-    
-
-
-<div class="post-block">
-  
-  
-
-  <article itemscope itemtype="http://schema.org/Article" class="post-content" lang="">
-    <link itemprop="mainEntityOfPage" href="https://niuniuliuliu.github.io/2024/05/06/git-server-setup/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="image" content="/images/avatar.gif">
-      <meta itemprop="name" content="niuniuliuliu">
-      <meta itemprop="description" content="">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="niuniuliuliu">
-    </span>
-      <header class="post-header">
-        <h2 class="post-title" itemprop="name headline">
-          <a href="/2024/05/06/git-server-setup/" class="post-title-link" itemprop="url">git服务器搭建</a>
-        </h2>
-
-        <div class="post-meta-container">
-          <div class="post-meta">
-    <span class="post-meta-item">
-      <span class="post-meta-item-icon">
-        <i class="far fa-calendar"></i>
-      </span>
-      <span class="post-meta-item-text">发表于</span>
-      
-
-      <time title="创建时间：2024-05-06 21:40:24 / 修改时间：21:52:07" itemprop="dateCreated datePublished" datetime="2024-05-06T21:40:24+08:00">2024-05-06</time>
-    </span>
-    <span class="post-meta-item">
-      <span class="post-meta-item-icon">
-        <i class="far fa-folder"></i>
-      </span>
-      <span class="post-meta-item-text">分类于</span>
-        <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-          <a href="/categories/%E5%B7%A5%E5%85%B7/" itemprop="url" rel="index"><span itemprop="name">工具</span></a>
-        </span>
-    </span>
-
-  
-</div>
-
-        </div>
-      </header>
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-          <h2 id="1-安装git"><a href="#1-安装git" class="headerlink" title="1. 安装git"></a>1. 安装git</h2><p><strong>安装相关包</strong></p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">yum install curl-devel expat-devel gettext-devel openssl-devel zlib-devel perl-devel</span><br></pre></td></tr></table></figure>
-<p><strong>安装git</strong></p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">yum install git</span><br></pre></td></tr></table></figure>
-
-<h2 id="2-创建用户组和用户"><a href="#2-创建用户组和用户" class="headerlink" title="2. 创建用户组和用户"></a>2. 创建用户组和用户</h2><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">groupadd git</span><br><span class="line">useradd git -g git</span><br></pre></td></tr></table></figure>
-
-<h2 id="3-导入公钥"><a href="#3-导入公钥" class="headerlink" title="3. 导入公钥"></a>3. 导入公钥</h2><p>将需要访问git的用户公钥导入到/home/git/.ssh/authorized_keys文件中</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">cd &#x2F;home&#x2F;git&#x2F;</span><br><span class="line">mkdir .ssh</span><br><span class="line">chmod 755.ssh</span><br><span class="line">touch .ssh&#x2F;authorized_keys</span><br><span class="line">chmod 644.ssh&#x2F;authorized_keys</span><br></pre></td></tr></table></figure>
-
-<h2 id="4-初始化git仓库"><a href="#4-初始化git仓库" class="headerlink" title="4. 初始化git仓库"></a>4. 初始化git仓库</h2><p>选择一个目录作为git的仓库，如/home/repos 创建目录并分配权限，初始化一个名为test的空仓库，修改test仓库的权限。</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">cd &#x2F;home</span><br><span class="line">mkdir repos</span><br><span class="line">chown git:git repos&#x2F;</span><br><span class="line">cd repos</span><br><span class="line">git init --bare test.git</span><br><span class="line">chown -R git:git test.git</span><br></pre></td></tr></table></figure>
-
-<h2 id="5-本地clone"><a href="#5-本地clone" class="headerlink" title="5. 本地clone"></a>5. 本地clone</h2><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">git clone git@&lt;your server address&gt;:&#x2F;home&#x2F;repos&#x2F;test.git&#x2F;</span><br></pre></td></tr></table></figure>
-      
-    </div>
-
-    
-    
-    
-
-    <footer class="post-footer">
-        <div class="post-eof"></div>
-      
-    </footer>
-  </article>
-</div>
-
-
-
-
-    
-
-
-<div class="post-block">
-  
-  
-
-  <article itemscope itemtype="http://schema.org/Article" class="post-content" lang="">
-    <link itemprop="mainEntityOfPage" href="https://niuniuliuliu.github.io/2021/06/06/web-components/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="image" content="/images/avatar.gif">
-      <meta itemprop="name" content="niuniuliuliu">
-      <meta itemprop="description" content="">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="niuniuliuliu">
-    </span>
-      <header class="post-header">
-        <h2 class="post-title" itemprop="name headline">
-          <a href="/2021/06/06/web-components/" class="post-title-link" itemprop="url">Web Components入门</a>
-        </h2>
-
-        <div class="post-meta-container">
-          <div class="post-meta">
-    <span class="post-meta-item">
-      <span class="post-meta-item-icon">
-        <i class="far fa-calendar"></i>
-      </span>
-      <span class="post-meta-item-text">发表于</span>
-      
-
-      <time title="创建时间：2021-06-06 10:53:42 / 修改时间：16:09:10" itemprop="dateCreated datePublished" datetime="2021-06-06T10:53:42+08:00">2021-06-06</time>
-    </span>
-    <span class="post-meta-item">
-      <span class="post-meta-item-icon">
-        <i class="far fa-folder"></i>
-      </span>
-      <span class="post-meta-item-text">分类于</span>
-        <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-          <a href="/categories/web%E5%89%8D%E7%AB%AF/" itemprop="url" rel="index"><span itemprop="name">web前端</span></a>
-        </span>
-    </span>
-
-  
-</div>
-
-        </div>
-      </header>
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-          <p>目前前端的流行框架，如React、Vue、Angular都是组件框架。而Web Components 目前已经成为浏览器支持的标准API，它允许我们创建自定义元素，通过HTML、JavaScript、CSS来实现可复用的组件。</p>
-<p>Web Components由三项技术组成：</p>
-<ul>
-<li><p><strong>Custom elements（自定义元素）</strong></p>
-<p>  通过一组JavaScript API来定义Custom elements。</p>
-</li>
-<li><p><strong>Shadow DOM（影子DOM）</strong></p>
-<p>  一组JavaScript API，用于将封装的“影子”DOM树附加到元素（与主文档DOM分开呈现）并控制其关联的功能。Shadow DOM可以看作是“DOM中的DOM”，它有自己独立的DOM树，具有自己的元素和样式，与原始DOM完全隔离。</p>
-</li>
-<li><p><strong>HTML templates（HTML模板）</strong></p>
-<p>  通过 template 和 slot，来定义可复用的元素结构。<br></br></br></p>
-          <!--noindex-->
-            <div class="post-button">
-              <a class="btn" href="/2021/06/06/web-components/#more" rel="contents">
-                阅读全文 &raquo;
-              </a>
-            </div>
-          <!--/noindex-->
         
-      
-    </div>
 
-    
-    
-    
-
-    <footer class="post-footer">
-        <div class="post-eof"></div>
-      
-    </footer>
-  </article>
-</div>
-
-
-
-
-    
-
-
-<div class="post-block">
-  
-  
-
-  <article itemscope itemtype="http://schema.org/Article" class="post-content" lang="">
-    <link itemprop="mainEntityOfPage" href="https://niuniuliuliu.github.io/2021/03/16/angularjs-http-decorator/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="image" content="/images/avatar.gif">
-      <meta itemprop="name" content="niuniuliuliu">
-      <meta itemprop="description" content="">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="niuniuliuliu">
-    </span>
-      <header class="post-header">
-        <h2 class="post-title" itemprop="name headline">
-          <a href="/2021/03/16/angularjs-http-decorator/" class="post-title-link" itemprop="url">装饰模式在AngularJS升级中的应用</a>
-        </h2>
-
-        <div class="post-meta-container">
-          <div class="post-meta">
-    <span class="post-meta-item">
-      <span class="post-meta-item-icon">
-        <i class="far fa-calendar"></i>
-      </span>
-      <span class="post-meta-item-text">发表于</span>
-
-      <time title="创建时间：2021-03-16 13:49:12" itemprop="dateCreated datePublished" datetime="2021-03-16T13:49:12+08:00">2021-03-16</time>
-    </span>
-      <span class="post-meta-item">
-        <span class="post-meta-item-icon">
-          <i class="far fa-calendar-check"></i>
-        </span>
-        <span class="post-meta-item-text">更新于</span>
-        <time title="修改时间：2021-06-06 10:32:54" itemprop="dateModified" datetime="2021-06-06T10:32:54+08:00">2021-06-06</time>
-      </span>
-    <span class="post-meta-item">
-      <span class="post-meta-item-icon">
-        <i class="far fa-folder"></i>
-      </span>
-      <span class="post-meta-item-text">分类于</span>
-        <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-          <a href="/categories/web%E5%89%8D%E7%AB%AF/" itemprop="url" rel="index"><span itemprop="name">web前端</span></a>
-        </span>
-    </span>
-
-  
-</div>
-
-        </div>
-      </header>
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-          <p>最近接到一个任务，需要将原先项目中的AngularJS版本从1.3升级到1.6，升级过程基本挺顺利的，项目整体的修改并不多，只要参考官方给出的升级文档就可以了:</p>
-<p><a target="_blank" rel="noopener" href="https://code.angularjs.org/1.6.9/docs/guide/migration#migrating-from-1-3-to-1-4">https://code.angularjs.org/1.6.9/docs/guide/migration#migrating-from-1-3-to-1-4</a></p>
-          <!--noindex-->
-            <div class="post-button">
-              <a class="btn" href="/2021/03/16/angularjs-http-decorator/#more" rel="contents">
-                阅读全文 &raquo;
-              </a>
+          <div class="post-nav">
+            <div class="post-nav-item">
+                <a href="/2024/05/06/git-server-setup/" rel="prev" title="git服务器搭建">
+                  <i class="fa fa-chevron-left"></i> git服务器搭建
+                </a>
             </div>
-          <!--/noindex-->
-        
-      
-    </div>
-
-    
-    
-    
-
-    <footer class="post-footer">
-        <div class="post-eof"></div>
-      
-    </footer>
-  </article>
-</div>
-
-
-
-
-    
-
-
-<div class="post-block">
-  
-  
-
-  <article itemscope itemtype="http://schema.org/Article" class="post-content" lang="">
-    <link itemprop="mainEntityOfPage" href="https://niuniuliuliu.github.io/2021/03/15/mocha-notes/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="image" content="/images/avatar.gif">
-      <meta itemprop="name" content="niuniuliuliu">
-      <meta itemprop="description" content="">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="niuniuliuliu">
-    </span>
-      <header class="post-header">
-        <h2 class="post-title" itemprop="name headline">
-          <a href="/2021/03/15/mocha-notes/" class="post-title-link" itemprop="url">Mocha笔记</a>
-        </h2>
-
-        <div class="post-meta-container">
-          <div class="post-meta">
-    <span class="post-meta-item">
-      <span class="post-meta-item-icon">
-        <i class="far fa-calendar"></i>
-      </span>
-      <span class="post-meta-item-text">发表于</span>
-
-      <time title="创建时间：2021-03-15 16:35:16" itemprop="dateCreated datePublished" datetime="2021-03-15T16:35:16+08:00">2021-03-15</time>
-    </span>
-      <span class="post-meta-item">
-        <span class="post-meta-item-icon">
-          <i class="far fa-calendar-check"></i>
-        </span>
-        <span class="post-meta-item-text">更新于</span>
-        <time title="修改时间：2021-06-06 10:32:54" itemprop="dateModified" datetime="2021-06-06T10:32:54+08:00">2021-06-06</time>
-      </span>
-    <span class="post-meta-item">
-      <span class="post-meta-item-icon">
-        <i class="far fa-folder"></i>
-      </span>
-      <span class="post-meta-item-text">分类于</span>
-        <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-          <a href="/categories/web%E5%89%8D%E7%AB%AF/" itemprop="url" rel="index"><span itemprop="name">web前端</span></a>
-        </span>
-    </span>
-
-  
-</div>
-
-        </div>
-      </header>
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-          <h2 id="测试脚本"><a href="#测试脚本" class="headerlink" title="测试脚本"></a>测试脚本</h2><p>mocha默认加载test目录下的test.js，也可以通过参数指定需要运行的测试文件，如运行test目录下的test.math.js。</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">mocha test&#x2F;test.math.js</span><br></pre></td></tr></table></figure>
-<p>mocha的测试脚本</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">describe(&#39;test of math&#39;, function () &#123;</span><br><span class="line">    it(&#39;should return 2 when 1 + 1&#39;, function () &#123;</span><br><span class="line">        assert.equal(math.add(1, 1), 2);</span><br><span class="line">    &#125;);</span><br><span class="line">&#125;);</span><br></pre></td></tr></table></figure>
-<ul>
-<li>describe: 表示一个测试套件</li>
-<li>it： 表示一个测试用例</li>
-</ul>
-          <!--noindex-->
-            <div class="post-button">
-              <a class="btn" href="/2021/03/15/mocha-notes/#more" rel="contents">
-                阅读全文 &raquo;
-              </a>
+            <div class="post-nav-item">
             </div>
-          <!--/noindex-->
-        
-      
-    </div>
-
-    
-    
-    
-
-    <footer class="post-footer">
-        <div class="post-eof"></div>
-      
+          </div>
     </footer>
   </article>
 </div>
 
-
-
-
-    
-
-
-<div class="post-block">
-  
-  
-
-  <article itemscope itemtype="http://schema.org/Article" class="post-content" lang="">
-    <link itemprop="mainEntityOfPage" href="https://niuniuliuliu.github.io/2021/03/15/pwa-notes/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="image" content="/images/avatar.gif">
-      <meta itemprop="name" content="niuniuliuliu">
-      <meta itemprop="description" content="">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="niuniuliuliu">
-    </span>
-      <header class="post-header">
-        <h2 class="post-title" itemprop="name headline">
-          <a href="/2021/03/15/pwa-notes/" class="post-title-link" itemprop="url">PWA(Progressive Web Apps)学习笔记</a>
-        </h2>
-
-        <div class="post-meta-container">
-          <div class="post-meta">
-    <span class="post-meta-item">
-      <span class="post-meta-item-icon">
-        <i class="far fa-calendar"></i>
-      </span>
-      <span class="post-meta-item-text">发表于</span>
-
-      <time title="创建时间：2021-03-15 16:08:34" itemprop="dateCreated datePublished" datetime="2021-03-15T16:08:34+08:00">2021-03-15</time>
-    </span>
-      <span class="post-meta-item">
-        <span class="post-meta-item-icon">
-          <i class="far fa-calendar-check"></i>
-        </span>
-        <span class="post-meta-item-text">更新于</span>
-        <time title="修改时间：2021-06-06 10:32:54" itemprop="dateModified" datetime="2021-06-06T10:32:54+08:00">2021-06-06</time>
-      </span>
-    <span class="post-meta-item">
-      <span class="post-meta-item-icon">
-        <i class="far fa-folder"></i>
-      </span>
-      <span class="post-meta-item-text">分类于</span>
-        <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-          <a href="/categories/web%E5%89%8D%E7%AB%AF/" itemprop="url" rel="index"><span itemprop="name">web前端</span></a>
-        </span>
-    </span>
-
-  
-</div>
-
-        </div>
-      </header>
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-          <h2 id="什么是PWA"><a href="#什么是PWA" class="headerlink" title="什么是PWA"></a>什么是PWA</h2><p>PWA = 普通的网站 + manifest + Service Workers</p>
-<p>manifest文件包含网站相关的信息，包括图标，背景屏幕，颜色和默认方向。</p>
-<p>Service Workers为网站提供了更好的体验（渐进增强），允许将网站添加到设备的主屏幕，离线缓存。</p>
-          <!--noindex-->
-            <div class="post-button">
-              <a class="btn" href="/2021/03/15/pwa-notes/#more" rel="contents">
-                阅读全文 &raquo;
-              </a>
-            </div>
-          <!--/noindex-->
-        
-      
-    </div>
-
-    
-    
-    
-
-    <footer class="post-footer">
-        <div class="post-eof"></div>
-      
-    </footer>
-  </article>
-</div>
 
 
 
