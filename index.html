@@ -168,14 +168,14 @@
       <div class="site-state-item site-state-posts">
           <a href="/archives/">
         
-          <span class="site-state-item-count">6</span>
+          <span class="site-state-item-count">7</span>
           <span class="site-state-item-name">日志</span>
         </a>
       </div>
       <div class="site-state-item site-state-categories">
             <a href="/categories/">
           
-        <span class="site-state-item-count">2</span>
+        <span class="site-state-item-count">3</span>
         <span class="site-state-item-name">分类</span></a>
       </div>
       <div class="site-state-item site-state-tags">
@@ -213,6 +213,113 @@
 
 
     <div class="main-inner index posts-expand">
+
+    
+
+
+<div class="post-block">
+  
+  
+
+  <article itemscope itemtype="http://schema.org/Article" class="post-content" lang="">
+    <link itemprop="mainEntityOfPage" href="https://niuniuliuliu.github.io/2024/05/11/logical-operation/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/avatar.gif">
+      <meta itemprop="name" content="niuniuliuliu">
+      <meta itemprop="description" content="">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="niuniuliuliu">
+    </span>
+      <header class="post-header">
+        <h2 class="post-title" itemprop="name headline">
+          <a href="/2024/05/11/logical-operation/" class="post-title-link" itemprop="url">逻辑运算符</a>
+        </h2>
+
+        <div class="post-meta-container">
+          <div class="post-meta">
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-calendar"></i>
+      </span>
+      <span class="post-meta-item-text">发表于</span>
+      
+
+      <time title="创建时间：2024-05-11 15:20:48 / 修改时间：17:34:43" itemprop="dateCreated datePublished" datetime="2024-05-11T15:20:48+08:00">2024-05-11</time>
+    </span>
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-folder"></i>
+      </span>
+      <span class="post-meta-item-text">分类于</span>
+        <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+          <a href="/categories/%E8%AE%A1%E7%AE%97%E6%9C%BA%E5%9F%BA%E7%A1%80/" itemprop="url" rel="index"><span itemprop="name">计算机基础</span></a>
+        </span>
+    </span>
+
+  
+</div>
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+          <h2 id="1-逻辑与-AND"><a href="#1-逻辑与-AND" class="headerlink" title="1. 逻辑与(AND)"></a>1. 逻辑与(AND)</h2><h3 id="A-amp-B"><a href="#A-amp-B" class="headerlink" title="(A &amp; B)"></a>(A &amp; B)</h3><p><strong>全1为1，有0为0</strong></p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">0b1010 &amp; 0b1100 &#x3D; 0b1000</span><br></pre></td></tr></table></figure>
+
+<h2 id="2-逻辑或-OR"><a href="#2-逻辑或-OR" class="headerlink" title="2. 逻辑或(OR)"></a>2. 逻辑或(OR)</h2><h3 id="A-B"><a href="#A-B" class="headerlink" title="(A | B)"></a>(A | B)</h3><p><strong>全0为0，有1为1</strong></p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">0b1010 | 0b1100 &#x3D; 0b1110</span><br></pre></td></tr></table></figure>
+
+<h2 id="3-逻辑非-NOT"><a href="#3-逻辑非-NOT" class="headerlink" title="3. 逻辑非(NOT)"></a>3. 逻辑非(NOT)</h2><h3 id="（-A）"><a href="#（-A）" class="headerlink" title="（!A）"></a>（!A）</h3><p><strong>0变1，1变0</strong></p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">NOT 0b1010 &#x3D; 0b0101</span><br></pre></td></tr></table></figure>
+
+<p>计算机语言中的逻辑非(按位取反)通常是将符号位一起取反，然后将符号位之外的其他数字取反，末位再加上1取其补码。 这样做的目的是为了统一加减法，因为计算机中的减法是加上一个负数，负数用补码来表示。</p>
+<p>如: ~0b1010 二进制01010</p>
+<p>先取反： 10101</p>
+<p>除符号位外取反： 11010</p>
+<p>末位加1: 11011</p>
+<p>得：-11</p>
+<p>如果单纯只是想对无符号整数取反，可以通过全1的数与当前数异或运算就可以。</p>
+<p>如对 0b1010 进行逻辑非运算，可通过如下方法取得结果：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">0b1111 ^ 0b1010 &#x3D; 0b0101</span><br></pre></td></tr></table></figure>
+
+
+
+<h2 id="4-异或-XOR"><a href="#4-异或-XOR" class="headerlink" title="4.异或(XOR)"></a>4.异或(XOR)</h2><h3 id="A-B-1"><a href="#A-B-1" class="headerlink" title="(A ^ B)"></a>(A ^ B)</h3><p><strong>相同为0，不同为1</strong></p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">0b1010 ^ 0b1100 &#x3D; 0b0110</span><br></pre></td></tr></table></figure>
+
+<h2 id="5-同或-XNOR"><a href="#5-同或-XNOR" class="headerlink" title="5.同或(XNOR)"></a>5.同或(XNOR)</h2><h3 id="A-XNOR-B"><a href="#A-XNOR-B" class="headerlink" title="(A XNOR B)"></a>(A XNOR B)</h3><p><strong>相同为1，不同为0</strong></p>
+<p>计算机语言中一般没有同或运算符，可以通过 两个数的异或结果后再异或1 即可得到同或结果</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">0b1010 ^ 0b1100 ^ 0b1111 &#x3D; 0b1001</span><br></pre></td></tr></table></figure>
+
+<h2 id="6-与非-NAND"><a href="#6-与非-NAND" class="headerlink" title="6.与非(NAND)"></a>6.与非(NAND)</h2><h3 id="A-NAND-B"><a href="#A-NAND-B" class="headerlink" title="(A NAND B)"></a>(A NAND B)</h3><p><strong>全1为0，有0为1</strong></p>
+<p>先进行逻辑与运算，再进行逻辑非运算</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">0b1010 NAND 0b1100 &#x3D; 0b0111</span><br><span class="line"></span><br><span class="line">0b1111 ^ (0b1010 &amp; 0b1100) &#x3D; 0b0111</span><br></pre></td></tr></table></figure>
+
+<h2 id="7-或非-NOR"><a href="#7-或非-NOR" class="headerlink" title="7.或非(NOR)"></a>7.或非(NOR)</h2><h3 id="A-NOR-B"><a href="#A-NOR-B" class="headerlink" title="(A NOR B)"></a>(A NOR B)</h3><p><strong>全0为1，有1为0</strong></p>
+<p>先进行逻辑与运算，再进行逻辑非运算</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">0b1010 NOR 0b1100 &#x3D; 0b0001</span><br><span class="line"></span><br><span class="line">0b1111 ^ (0b1010 | 0b1100) &#x3D; 0b0001</span><br></pre></td></tr></table></figure>
+      
+    </div>
+
+    
+    
+    
+
+    <footer class="post-footer">
+        <div class="post-eof"></div>
+      
+    </footer>
+  </article>
+</div>
+
+
+
 
     
 

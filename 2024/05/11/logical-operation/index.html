@@ -23,20 +23,20 @@
     var NexT = window.NexT || {};
     var CONFIG = {"hostname":"niuniuliuliu.github.io","root":"/","images":"/images","scheme":"Pisces","version":"8.2.2","exturl":false,"sidebar":{"position":"left","display":"post","padding":18,"offset":12},"copycode":false,"bookmark":{"enable":false,"color":"#222","save":"auto"},"fancybox":false,"mediumzoom":false,"lazyload":false,"pangu":false,"comments":{"style":"tabs","active":null,"storage":true,"lazyload":false,"nav":null},"motion":{"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"fadeInDown","post_body":"fadeInDown","coll_header":"fadeInLeft","sidebar":"fadeInUp"}},"prism":false,"i18n":{"placeholder":"搜索...","empty":"没有找到任何搜索结果：${query}","hits_time":"找到 ${hits} 个搜索结果（用时 ${time} 毫秒）","hits":"找到 ${hits} 个搜索结果"}};
   </script>
-<meta name="description" content="1. 安装git安装相关包 1yum install curl-devel expat-devel gettext-devel openssl-devel zlib-devel perl-devel 安装git 1yum install git  2. 创建用户组和用户12groupadd gituseradd git -g git  3. 导入公钥将需要访问git的用户公钥导入到&#x2F;home&#x2F;gi">
+<meta name="description" content="1. 逻辑与(AND)(A &amp; B)全1为1，有0为0 10b1010 &amp; 0b1100 &#x3D; 0b1000  2. 逻辑或(OR)(A | B)全0为0，有1为1 10b1010 | 0b1100 &#x3D; 0b1110  3. 逻辑非(NOT)（!A）0变1，1变0 1NOT 0b1010 &#x3D; 0b0101  计算机语言中的逻辑非(按位取反)通常是将符号位">
 <meta property="og:type" content="article">
-<meta property="og:title" content="git服务器搭建">
-<meta property="og:url" content="https://niuniuliuliu.github.io/2024/05/06/git-server-setup/index.html">
+<meta property="og:title" content="逻辑运算符">
+<meta property="og:url" content="https://niuniuliuliu.github.io/2024/05/11/logical-operation/index.html">
 <meta property="og:site_name" content="niuniuliuliu">
-<meta property="og:description" content="1. 安装git安装相关包 1yum install curl-devel expat-devel gettext-devel openssl-devel zlib-devel perl-devel 安装git 1yum install git  2. 创建用户组和用户12groupadd gituseradd git -g git  3. 导入公钥将需要访问git的用户公钥导入到&#x2F;home&#x2F;gi">
+<meta property="og:description" content="1. 逻辑与(AND)(A &amp; B)全1为1，有0为0 10b1010 &amp; 0b1100 &#x3D; 0b1000  2. 逻辑或(OR)(A | B)全0为0，有1为1 10b1010 | 0b1100 &#x3D; 0b1110  3. 逻辑非(NOT)（!A）0变1，1变0 1NOT 0b1010 &#x3D; 0b0101  计算机语言中的逻辑非(按位取反)通常是将符号位">
 <meta property="og:locale" content="zh_CN">
-<meta property="article:published_time" content="2024-05-06T13:40:24.000Z">
-<meta property="article:modified_time" content="2024-05-06T13:52:07.913Z">
+<meta property="article:published_time" content="2024-05-11T07:20:48.000Z">
+<meta property="article:modified_time" content="2024-05-11T09:34:43.988Z">
 <meta property="article:author" content="niuniuliuliu">
 <meta name="twitter:card" content="summary">
 
 
-<link rel="canonical" href="https://niuniuliuliu.github.io/2024/05/06/git-server-setup/">
+<link rel="canonical" href="https://niuniuliuliu.github.io/2024/05/11/logical-operation/">
 
 
 <script class="page-configurations">
@@ -48,7 +48,7 @@
     lang   : 'zh-CN'
   };
 </script>
-<title>git服务器搭建 | niuniuliuliu</title>
+<title>逻辑运算符 | niuniuliuliu</title>
   
 
 
@@ -159,7 +159,7 @@
       <div class="sidebar-panel-container">
         <!--noindex-->
         <div class="post-toc-wrap sidebar-panel">
-            <div class="post-toc animated"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#1-%E5%AE%89%E8%A3%85git"><span class="nav-number">1.</span> <span class="nav-text">1. 安装git</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#2-%E5%88%9B%E5%BB%BA%E7%94%A8%E6%88%B7%E7%BB%84%E5%92%8C%E7%94%A8%E6%88%B7"><span class="nav-number">2.</span> <span class="nav-text">2. 创建用户组和用户</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#3-%E5%AF%BC%E5%85%A5%E5%85%AC%E9%92%A5"><span class="nav-number">3.</span> <span class="nav-text">3. 导入公钥</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#4-%E5%88%9D%E5%A7%8B%E5%8C%96git%E4%BB%93%E5%BA%93"><span class="nav-number">4.</span> <span class="nav-text">4. 初始化git仓库</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#5-%E6%9C%AC%E5%9C%B0clone"><span class="nav-number">5.</span> <span class="nav-text">5. 本地clone</span></a></li></ol></div>
+            <div class="post-toc animated"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#1-%E9%80%BB%E8%BE%91%E4%B8%8E-AND"><span class="nav-number">1.</span> <span class="nav-text">1. 逻辑与(AND)</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#A-amp-B"><span class="nav-number">1.1.</span> <span class="nav-text">(A &amp; B)</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#2-%E9%80%BB%E8%BE%91%E6%88%96-OR"><span class="nav-number">2.</span> <span class="nav-text">2. 逻辑或(OR)</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#A-B"><span class="nav-number">2.1.</span> <span class="nav-text">(A | B)</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#3-%E9%80%BB%E8%BE%91%E9%9D%9E-NOT"><span class="nav-number">3.</span> <span class="nav-text">3. 逻辑非(NOT)</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#%EF%BC%88-A%EF%BC%89"><span class="nav-number">3.1.</span> <span class="nav-text">（!A）</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#4-%E5%BC%82%E6%88%96-XOR"><span class="nav-number">4.</span> <span class="nav-text">4.异或(XOR)</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#A-B-1"><span class="nav-number">4.1.</span> <span class="nav-text">(A ^ B)</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#5-%E5%90%8C%E6%88%96-XNOR"><span class="nav-number">5.</span> <span class="nav-text">5.同或(XNOR)</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#A-XNOR-B"><span class="nav-number">5.1.</span> <span class="nav-text">(A XNOR B)</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#6-%E4%B8%8E%E9%9D%9E-NAND"><span class="nav-number">6.</span> <span class="nav-text">6.与非(NAND)</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#A-NAND-B"><span class="nav-number">6.1.</span> <span class="nav-text">(A NAND B)</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#7-%E6%88%96%E9%9D%9E-NOR"><span class="nav-number">7.</span> <span class="nav-text">7.或非(NOR)</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#A-NOR-B"><span class="nav-number">7.1.</span> <span class="nav-text">(A NOR B)</span></a></li></ol></li></ol></div>
         </div>
         <!--/noindex-->
 
@@ -228,7 +228,7 @@
   
 
   <article itemscope itemtype="http://schema.org/Article" class="post-content" lang="zh-CN">
-    <link itemprop="mainEntityOfPage" href="https://niuniuliuliu.github.io/2024/05/06/git-server-setup/">
+    <link itemprop="mainEntityOfPage" href="https://niuniuliuliu.github.io/2024/05/11/logical-operation/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="image" content="/images/avatar.gif">
@@ -241,7 +241,7 @@
     </span>
       <header class="post-header">
         <h1 class="post-title" itemprop="name headline">
-          git服务器搭建
+          逻辑运算符
         </h1>
 
         <div class="post-meta-container">
@@ -253,7 +253,7 @@
       <span class="post-meta-item-text">发表于</span>
       
 
-      <time title="创建时间：2024-05-06 21:40:24 / 修改时间：21:52:07" itemprop="dateCreated datePublished" datetime="2024-05-06T21:40:24+08:00">2024-05-06</time>
+      <time title="创建时间：2024-05-11 15:20:48 / 修改时间：17:34:43" itemprop="dateCreated datePublished" datetime="2024-05-11T15:20:48+08:00">2024-05-11</time>
     </span>
     <span class="post-meta-item">
       <span class="post-meta-item-icon">
@@ -261,7 +261,7 @@
       </span>
       <span class="post-meta-item-text">分类于</span>
         <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-          <a href="/categories/%E5%B7%A5%E5%85%B7/" itemprop="url" rel="index"><span itemprop="name">工具</span></a>
+          <a href="/categories/%E8%AE%A1%E7%AE%97%E6%9C%BA%E5%9F%BA%E7%A1%80/" itemprop="url" rel="index"><span itemprop="name">计算机基础</span></a>
         </span>
     </span>
 
@@ -275,20 +275,41 @@
     
     
     <div class="post-body" itemprop="articleBody">
-        <h2 id="1-安装git"><a href="#1-安装git" class="headerlink" title="1. 安装git"></a>1. 安装git</h2><p><strong>安装相关包</strong></p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">yum install curl-devel expat-devel gettext-devel openssl-devel zlib-devel perl-devel</span><br></pre></td></tr></table></figure>
-<p><strong>安装git</strong></p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">yum install git</span><br></pre></td></tr></table></figure>
+        <h2 id="1-逻辑与-AND"><a href="#1-逻辑与-AND" class="headerlink" title="1. 逻辑与(AND)"></a>1. 逻辑与(AND)</h2><h3 id="A-amp-B"><a href="#A-amp-B" class="headerlink" title="(A &amp; B)"></a>(A &amp; B)</h3><p><strong>全1为1，有0为0</strong></p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">0b1010 &amp; 0b1100 &#x3D; 0b1000</span><br></pre></td></tr></table></figure>
 
-<h2 id="2-创建用户组和用户"><a href="#2-创建用户组和用户" class="headerlink" title="2. 创建用户组和用户"></a>2. 创建用户组和用户</h2><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">groupadd git</span><br><span class="line">useradd git -g git</span><br></pre></td></tr></table></figure>
+<h2 id="2-逻辑或-OR"><a href="#2-逻辑或-OR" class="headerlink" title="2. 逻辑或(OR)"></a>2. 逻辑或(OR)</h2><h3 id="A-B"><a href="#A-B" class="headerlink" title="(A | B)"></a>(A | B)</h3><p><strong>全0为0，有1为1</strong></p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">0b1010 | 0b1100 &#x3D; 0b1110</span><br></pre></td></tr></table></figure>
 
-<h2 id="3-导入公钥"><a href="#3-导入公钥" class="headerlink" title="3. 导入公钥"></a>3. 导入公钥</h2><p>将需要访问git的用户公钥导入到/home/git/.ssh/authorized_keys文件中</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">cd &#x2F;home&#x2F;git&#x2F;</span><br><span class="line">mkdir .ssh</span><br><span class="line">chmod 755.ssh</span><br><span class="line">touch .ssh&#x2F;authorized_keys</span><br><span class="line">chmod 644.ssh&#x2F;authorized_keys</span><br></pre></td></tr></table></figure>
+<h2 id="3-逻辑非-NOT"><a href="#3-逻辑非-NOT" class="headerlink" title="3. 逻辑非(NOT)"></a>3. 逻辑非(NOT)</h2><h3 id="（-A）"><a href="#（-A）" class="headerlink" title="（!A）"></a>（!A）</h3><p><strong>0变1，1变0</strong></p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">NOT 0b1010 &#x3D; 0b0101</span><br></pre></td></tr></table></figure>
 
-<h2 id="4-初始化git仓库"><a href="#4-初始化git仓库" class="headerlink" title="4. 初始化git仓库"></a>4. 初始化git仓库</h2><p>选择一个目录作为git的仓库，如/home/repos 创建目录并分配权限，初始化一个名为test的空仓库，修改test仓库的权限。</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">cd &#x2F;home</span><br><span class="line">mkdir repos</span><br><span class="line">chown git:git repos&#x2F;</span><br><span class="line">cd repos</span><br><span class="line">git init --bare test.git</span><br><span class="line">chown -R git:git test.git</span><br></pre></td></tr></table></figure>
+<p>计算机语言中的逻辑非(按位取反)通常是将符号位一起取反，然后将符号位之外的其他数字取反，末位再加上1取其补码。 这样做的目的是为了统一加减法，因为计算机中的减法是加上一个负数，负数用补码来表示。</p>
+<p>如: ~0b1010 二进制01010</p>
+<p>先取反： 10101</p>
+<p>除符号位外取反： 11010</p>
+<p>末位加1: 11011</p>
+<p>得：-11</p>
+<p>如果单纯只是想对无符号整数取反，可以通过全1的数与当前数异或运算就可以。</p>
+<p>如对 0b1010 进行逻辑非运算，可通过如下方法取得结果：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">0b1111 ^ 0b1010 &#x3D; 0b0101</span><br></pre></td></tr></table></figure>
 
-<h2 id="5-本地clone"><a href="#5-本地clone" class="headerlink" title="5. 本地clone"></a>5. 本地clone</h2><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">git clone git@&lt;your server address&gt;:&#x2F;home&#x2F;repos&#x2F;test.git&#x2F;</span><br></pre></td></tr></table></figure>
+
+
+<h2 id="4-异或-XOR"><a href="#4-异或-XOR" class="headerlink" title="4.异或(XOR)"></a>4.异或(XOR)</h2><h3 id="A-B-1"><a href="#A-B-1" class="headerlink" title="(A ^ B)"></a>(A ^ B)</h3><p><strong>相同为0，不同为1</strong></p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">0b1010 ^ 0b1100 &#x3D; 0b0110</span><br></pre></td></tr></table></figure>
+
+<h2 id="5-同或-XNOR"><a href="#5-同或-XNOR" class="headerlink" title="5.同或(XNOR)"></a>5.同或(XNOR)</h2><h3 id="A-XNOR-B"><a href="#A-XNOR-B" class="headerlink" title="(A XNOR B)"></a>(A XNOR B)</h3><p><strong>相同为1，不同为0</strong></p>
+<p>计算机语言中一般没有同或运算符，可以通过 两个数的异或结果后再异或1 即可得到同或结果</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">0b1010 ^ 0b1100 ^ 0b1111 &#x3D; 0b1001</span><br></pre></td></tr></table></figure>
+
+<h2 id="6-与非-NAND"><a href="#6-与非-NAND" class="headerlink" title="6.与非(NAND)"></a>6.与非(NAND)</h2><h3 id="A-NAND-B"><a href="#A-NAND-B" class="headerlink" title="(A NAND B)"></a>(A NAND B)</h3><p><strong>全1为0，有0为1</strong></p>
+<p>先进行逻辑与运算，再进行逻辑非运算</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">0b1010 NAND 0b1100 &#x3D; 0b0111</span><br><span class="line"></span><br><span class="line">0b1111 ^ (0b1010 &amp; 0b1100) &#x3D; 0b0111</span><br></pre></td></tr></table></figure>
+
+<h2 id="7-或非-NOR"><a href="#7-或非-NOR" class="headerlink" title="7.或非(NOR)"></a>7.或非(NOR)</h2><h3 id="A-NOR-B"><a href="#A-NOR-B" class="headerlink" title="(A NOR B)"></a>(A NOR B)</h3><p><strong>全0为1，有1为0</strong></p>
+<p>先进行逻辑与运算，再进行逻辑非运算</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">0b1010 NOR 0b1100 &#x3D; 0b0001</span><br><span class="line"></span><br><span class="line">0b1111 ^ (0b1010 | 0b1100) &#x3D; 0b0001</span><br></pre></td></tr></table></figure>
     </div>
 
     
@@ -301,14 +322,11 @@
 
           <div class="post-nav">
             <div class="post-nav-item">
-                <a href="/2021/06/06/web-components/" rel="prev" title="Web Components入门">
-                  <i class="fa fa-chevron-left"></i> Web Components入门
+                <a href="/2024/05/10/cypress/" rel="prev" title="Cypress使用简介">
+                  <i class="fa fa-chevron-left"></i> Cypress使用简介
                 </a>
             </div>
             <div class="post-nav-item">
-                <a href="/2024/05/10/cypress/" rel="next" title="Cypress使用简介">
-                  Cypress使用简介 <i class="fa fa-chevron-right"></i>
-                </a>
             </div>
           </div>
     </footer>
